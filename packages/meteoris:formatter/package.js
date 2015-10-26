@@ -1,8 +1,8 @@
 Package.describe({
     name: 'meteoris:formatter',
-    version: '0.0.1',
+    version: '0.0.2',
     summary: 'Meteoris package for formatting anything.',
-    git: '',
+    git: 'https://github.com/meteoris/meteoris/tree/master/packages/meteoris:formatter',
     documentation: 'README.md'
 });
 

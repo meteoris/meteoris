@@ -1,8 +1,8 @@
 Package.describe({
     name: 'meteoris:flash',
-    version: '0.0.2',
+    version: '0.0.3',
     summary: 'Meteoris package for displaying flash message easily.',
-    git: '',
+    git: 'https://github.com/meteoris/meteoris/tree/master/packages/meteoris:flash',
     documentation: 'README.md'
 });
 

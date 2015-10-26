@@ -1,8 +1,8 @@
 Package.describe({
     name: 'meteoris:theme-admin',
-    version: '0.0.3',
+    version: '0.0.4',
     summary: 'Admin Theme for any meteoris apps.',
-    git: '',
+    git: 'https://github.com/meteoris/meteoris/tree/master/packages/meteoris:theme-admin',
     documentation: 'README.md'
 });
 

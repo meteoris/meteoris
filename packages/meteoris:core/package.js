@@ -1,8 +1,8 @@
 Package.describe({
     name: 'meteoris:core',
-    version: '0.2.1',
+    version: '0.2.2',
     summary: 'Meteoris Core System.',
-    git: 'https://github.com/meteoris/meteoris',
+    git: 'https://github.com/meteoris/meteoris/tree/master/packages/meteoris:core',
     documentation: 'README.md'
 });
 

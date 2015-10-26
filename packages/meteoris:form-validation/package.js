@@ -1,8 +1,8 @@
 Package.describe({
     name: 'meteoris:form-validation',
-    version: '0.0.1',
+    version: '0.0.2',
     summary: 'Meteoris package for validating form for each fields using Simple Schema Dependency.',
-    git: '',
+    git: 'https://github.com/meteoris/meteoris/tree/master/packages/meteoris:form-validation',
     documentation: 'README.md'
 });
 
