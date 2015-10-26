@@ -1,0 +1,159 @@
+<template name="meteoris_userIndex">
+    <section class="content-header">
+        <h1>User</h1>
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/meteoris/user">User</a></li>
+            <li class="active">index</li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <div class="box">
+            <div class="box-header">
+                <div class="toolbar">
+                    <div class="pull-left">
+                        <a class="btn btn-success" href="/meteoris/user/insert">Insert</a>
+                        <a href="/meteoris/user/settings" class="btn btn-success">Settings</a>
+                        <a id="btnRemoveAll" class="btn btn-danger">Remove Selection</a>
+                        <!-- {{#if currentUser}}
+                        <a id="btnLogout" class="btn btn-danger">Logout</a>
+                        <a href="/meteoris/user/profile/{{currentUser._id}}" class="btn btn-success">Profile</a>
+                        {{/if}} -->
+                    </div>   
+                    <div class="quick-search pull-right col-xs-12 col-md-3">
+                        <div class="input-group">
+                            <input type="text" id="search" class="form-control" placeholder="Type Here to Search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+
+                {{#if Template.subscriptionsReady}}    
+                {{#if isEmpty}}
+                <p>No Data Found</p>
+                {{else}}
+                <div class=" table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 30px;"><input type="checkbox" id="checkAll"/></th>                        
+                                <th id="btnSortEmail" class="{{meteoris_gridViewSortClass 'email'}}">Email</th>
+                                <th id="btnSortMugenRoleGroupId" class="{{meteoris_gridViewSortClass 'group'}}">Role Group</th>
+                                <th id="btnSortName" class="{{meteoris_gridViewSortClass 'name'}}">Name</th>
+                                <th>Created At</th>
+                                <th style="width: 145px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each models}}
+                            <tr>
+                                <td><input type="checkbox" class="checkAll" value="{{_id}}"/></td>
+                                <td>{{emails.[0].address}}</td>
+                                <td>{{profile.group}}</td>
+                                <td>{{profile.name}}</td>
+                                <td>{{meteoris_formatter 'date' createdAt}}</td>
+                                <td>
+                                    <a href="/meteoris/user/view/{{_id}}" class="btn btn-default"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                    <a href="/meteoris/user/update/{{_id}}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    <a id="btnRemove" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{#if hasMore}}
+                <a class="btn btn-default load-more btn-block" href="{{hasMore}}">Load More ...</a>
+                {{/if}}    
+                {{/if}}        
+                {{else}}  
+                {{> spinner}}
+                {{/if}}
+
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+    </section><!-- /.content -->  
+
+    <!--    <div class="container">
+            Breadcrumbs
+            <ol class="breadcrumb">
+                <li><a href="/"> Home</a></li>
+                <li><a href="/meteoris/user"> User</a></li>
+                <li class="active"> Index</li>
+            </ol>
+    
+            <div class="title">
+                <h3 class="pull-left">User</h3>
+            </div>
+            <div class="clearfix"></div>
+    
+            <div class="toolbar">
+                <div class="pull-left">
+                    <a class="btn btn-success" href="/meteoris/user/insert">Insert</a>
+                    <a id="btnRemoveAll" class="btn btn-danger">Remove Selection</a>
+                    {{#if currentUser}}
+                    <a id="btnLogout" class="btn btn-danger">Logout</a>
+                    <a href="/meteoris/user/profile/{{currentUser._id}}" class="btn btn-success">Profile</a>
+                    {{/if}}
+                </div>   
+                <div class="quick-search pull-right col-xs-12 col-md-3">
+                    <div class="input-group">
+                        <input type="text" id="search" class="form-control" placeholder="Type Here to Search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+    
+    
+            {{#if Template.subscriptionsReady}}    
+            {{#if isEmpty}}
+            <p>No Data Found</p>
+            {{else}}
+            <div class=" table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width: 30px;"><input type="checkbox" id="checkAll"/></th>                        
+                            <th id="btnSortEmail" class="{{meteoris_gridViewSortClass 'email'}}">Email</th>
+                            <th id="btnSortMugenRoleGroupId" class="{{meteoris_gridViewSortClass 'group'}}">Role Group</th>
+                            <th id="btnSortName" class="{{meteoris_gridViewSortClass 'name'}}">Name</th>
+                            <th>Created At</th>
+                            <th style="width: 145px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each models}}
+                        <tr>
+                            <td><input type="checkbox" class="checkAll" value="{{_id}}"/></td>
+                            <td>{{emails.[0].address}}</td>
+                            <td>{{profile.group}}</td>
+                            <td>{{profile.name}}</td>
+                            <td>{{meteoris_formatter 'date' createdAt}}</td>
+                            <td>
+                                <a href="/meteoris/user/view/{{_id}}" class="btn btn-default"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                <a href="/meteoris/user/update/{{_id}}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+                                <a id="btnRemove" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            {{#if hasMore}}
+            <a class="btn btn-default load-more btn-block" href="{{hasMore}}">Load More ...</a>
+            {{/if}}    
+            {{/if}}        
+            {{else}}  
+            {{> spinner}}
+            {{/if}}
+        </div>-->
+</template>

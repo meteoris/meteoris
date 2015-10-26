@@ -1,0 +1,121 @@
+<template name="meteoris_themeAdminSetting">
+    <section class="content-header">
+        <h1>Meteoris Theme Admin - Setting</h1>
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/meteoris/theme-admin/setting">Theme Admin</a></li>
+            <li class="active">setting</li>
+        </ol>
+    </section>
+
+    <section class="content">
+        {{#with model}}
+        <div class="box">            
+            <div class="box-body">
+                <div class="form-group {{#if error 'logoLarge'}}has-error{{/if}}">
+                    <label for="logoLarge" class="control-label">Logo Large</label>
+                    <input type="text" id="logoLarge" value="{{logoLarge}}" placeholder="Logo Large" class="form-control" autofocus="true">
+                    <span class="help-block">{{error "logoLarge"}}</span>
+                </div>
+                <div class="form-group {{#if error 'logoMini'}}has-error{{/if}}">
+                    <label for="logoMini" class="control-label">Logo Mini</label>
+                    <input type="text" id="logoMini" value="{{logoMini}}" placeholder="Logo Mini" class="form-control">
+                    <span class="help-block">{{error "logoMini"}}</span>
+                </div>
+                <div class="form-group {{#if error 'skin'}}has-error{{/if}}">
+                    <label for="skin" class="control-label">Skin</label>
+                    <select id="skin" class="form-control">
+                        <option value="blue" {{isSelectedSkin "blue"}}>Default (Blue)</option>
+                        <option value="black" {{isSelectedSkin "black"}}>Black</option>
+                        <option value="black-light" {{isSelectedSkin "black-light"}}>Black Light</option>
+                        <option value="blue-light" {{isSelectedSkin "blue-light"}}>Blue Light</option>
+                        <option value="green" {{isSelectedSkin "green"}}>Green</option>
+                        <option value="green-light" {{isSelectedSkin "green-light"}}>Green Light</option>
+                        <option value="purple" {{isSelectedSkin "purple"}}>Purple</option>
+                        <option value="purple-light" {{isSelectedSkin "purple-light"}}>Purple Light</option>
+                        <option value="red" {{isSelectedSkin "red"}}>Red</option>
+                        <option value="red-light" {{isSelectedSkin "red-light"}}>Red Light</option>
+                        <option value="yellow" {{isSelectedSkin "yellow"}}>Yellow</option>
+                        <option value="yellow-light" {{isSelectedSkin "yellow-light"}}>Yellow Light</option>
+                    </select>
+                    <span class="help-block">{{error "skin"}}</span>
+                </div>
+                <div class="form-group {{#if error 'fixed'}}has-error{{/if}}">
+                    <label for="fixed" class="control-label">Fixed</label>
+                    <select id="fixed" class="form-control">
+                        <option value="true" {{isSelectedFixed true}}>True</option>
+                        <option value="false" {{isSelectedFixed false}}>False</option>
+                    </select>
+                    <span class="help-block">{{error "fixed"}}</span>
+                </div>
+                <div class="form-group {{#if error 'sidebarMini'}}has-error{{/if}}">
+                    <label for="sidebarMini" class="control-label">Sidebar Mini</label>
+                    <select id="sidebarMini" class="form-control">
+                        <option value="true" {{isSelectedSidebarMini true}}>True</option>
+                        <option value="false" {{isSelectedSidebarMini false}}>False</option>
+                    </select>
+                    <span class="help-block">{{error "sidebarMini"}}</span>
+                </div>
+                <div class="form-group {{#if error 'footerText'}}has-error{{/if}}">
+                    <label for="footerText" class="control-label">Footer Text</label>
+                    <input type="text" id="footerText" value="{{footerText}}" placeholder="Footer Text" class="form-control">
+                    <span class="help-block">{{error "footerText"}}</span>
+                </div>
+                <button id="btnSave" type="submit" class="btn btn-primary pull-right">Submit</button>
+            </div>            
+        </div>
+<!--        <div class="box">
+            <div class="box-header">
+                <div class="toolbar">
+                    <div class="pull-left">
+                        <a class="btn btn-success" href="#" data-toggle="modal" data-target="#meteoris_themeAdminSettingForm">Insert Menu</a>
+                        {{> meteoris_themeAdminSettingForm}}
+                    </div>   
+                </div>
+            </div>
+            <div class="box-body">
+                
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Title</th>              
+                                <th rowspan="2">Url</th>              
+                                <th rowspan="2">Icon</th>              
+                                <th colspan="2">Sub Menus</th>
+                                <th rowspan="2" style="width: 145px;">Actions</th>
+                            </tr>
+                            <tr>
+                                <th>Title</th>
+                                <th>Url</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each menus}}
+                            <tr>
+                                <td>{{title}}</td>
+                                <td>{{url}}</td>
+                                <td>{{{icon}}}</td>
+                                <td>
+                                    <p>title submenu 1</p>
+                                    <p>title submenu 2</p>
+                                </td>
+                                <td>
+                                    <p>url submenu 1</p>
+                                    <p>url submenu 2</p>
+                                </td>     
+                                <td>
+                                    <a class="btn btn-success" id="btnUpdateMenu" href="#" data-toggle="modal" data-target="#meteoris_themeAdminSettingForm"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    <a id="btnRemoveMenu" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>-->
+        {{/with}}
+    </section>
+</template>

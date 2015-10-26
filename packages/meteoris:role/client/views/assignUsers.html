@@ -1,0 +1,113 @@
+<template name="meteoris_roleAssignUsers">
+    <section class="content-header">
+        <h1>Role - Assign Users</h1>
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/meteoris/role">Role</a></li>
+            <li class="active">assign users</li>
+        </ol>
+    </section>
+
+     <section class="content">
+        <div class="box">
+            <div class="box-header">
+                <div class="toolbar">
+                    <div class="pull-left">
+                       <h3 class="pull-left">Group <strong class="text-primary">{{group}}</strong></h3>
+                    </div>   
+                    <div class="toolbar pull-right">
+                        <a href="/meteoris/role" class="btn btn-default">Back</a> 
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        {{> meteoris_roleUsersListNotInGroup}}
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-default" id="btnAddUserInGroup"> <i class="fa fa-fw fa-angle-double-right "></i> </button>
+                        <br />
+                        <br />
+                        <button class="btn btn-default" id="btnRemoveUserInGroup"> <i class="fa fa-fw fa-angle-double-left "></i></button>
+                    </div>
+                    <div class="col-md-4">
+                        {{> meteoris_roleUsersListInGroup}}
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+    </section><!-- /.content -->  
+
+</template>
+
+<template name="meteoris_roleUsersListNotInGroup">
+    <h4>User not in Group</h4>
+    <div class=" table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 30px;"><input type="checkbox" id="checkAllUsersNotInGroup"/></th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}}
+                <tr>
+                    <td><input type="checkbox" class="checkAllUsersNotInGroup" value="{{_id}}"/></td>
+                    <td>{{profile.name}}</td>
+                    <td>{{emails.[0].address}}</td>
+                </tr>
+                {{else}}
+                <tr>
+                    <td colspan="3">No data found</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{#if Template.subscriptionsReady}}
+        {{#if hasMore}}
+        <a href="#" class="btn btn-default load-more btn-block">Load More</a>
+        {{/if}}
+        {{else}}
+        {{> spinner}}
+        {{/if}}
+    </div>
+</template>
+
+<template name="meteoris_roleUsersListInGroup">
+    <h4>User in Group</h4>
+    <div class=" table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 30px;"><input type="checkbox" id="checkAllUsersInGroup"/></th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}}
+                <tr>
+                    <td><input type="checkbox" class="checkAllUsersInGroup" value="{{_id}}"/></td>
+                    <td>{{profile.name}}</td>
+                    <td>{{emails.[0].address}}</td>
+                </tr>
+                {{else}}
+                <tr>
+                    <td colspan="3">No data found</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{#if Template.subscriptionsReady}}
+        {{#if hasMore}}
+        <a href="#" class="btn btn-default load-more btn-block">Load More</a>
+        {{/if}}
+        {{else}}
+        {{> spinner}}
+        {{/if}}
+    </div>
+</template>

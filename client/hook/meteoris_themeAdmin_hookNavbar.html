@@ -1,0 +1,37 @@
+<template name="meteoris_themeAdmin_hookNavbar">
+    <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+            {{#if currentUser}}
+            <!-- User Account: style can be found in dropdown.less -->
+            <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="/images/user.png" class="user-image" alt="User Image">
+                    <span class="hidden-xs">{{currentUser.profile.name}}</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <!-- User image -->
+                    <li class="user-header">
+                        <img src="/images/user.png" class="img-circle" alt="User Image">
+                        <p>
+                            {{currentUser.profile.name}}
+                        </p>
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                        <div class="pull-left">
+                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                        </div>
+                        <div class="pull-right">
+                            <a href="#" id="btnLogout" class="btn btn-default btn-flat">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            {{else}}
+            <li>
+                <a href="/meteoris/user/login">Login</a>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+</template>

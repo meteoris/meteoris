@@ -1,0 +1,63 @@
+/**
+ * This Code was created on April 2014
+ * If you find any bug, unreadable code, messy code, potential bug code, etc
+ * Please contact me at:
+ * Ega Radiegtya / radiegtya@yahoo.co.id / 085641278479
+ */
+
+Namespace('Meteoris.Flash');
+
+Meteoris.Flash = {
+    isOpened: false,
+    state: 'success',
+    message: 'success',
+    deps: new Tracker.Dependency,
+    setIsOpened: function(isOpened) {
+        this.isOpened = isOpened;
+        this.deps.changed();
+    },
+    setState: function(state) {
+        this.state = state;
+        this.deps.changed();
+    },
+    setMessage: function(message) {
+        this.message = message;
+        this.deps.changed();
+    },
+    getIsOpened: function() {
+        this.deps.depend();
+        return this.isOpened;
+    },
+    getState: function() {
+        this.deps.depend();
+        return this.state;
+    },
+    getMessage: function() {
+        this.deps.depend();
+        return this.message;
+    },
+    set: function(state, message) {
+        Meteoris.Flash.setState(state);
+        Meteoris.Flash.setMessage(message);
+        Meteoris.Flash.setIsOpened(true);
+        
+        Meteor.setTimeout(function() {
+            Meteoris.Flash.setIsOpened(false);
+        }, 4000);
+    }
+};
+
+Template.meteoris_flash.helpers({
+    isOpened: function() {
+        if (Meteoris.Flash.getIsOpened()) {
+            return true;
+        } else
+            return false;
+    },
+    state: function() {
+        return Meteoris.Flash.getState();
+    },
+    message: function() {
+        return Meteoris.Flash.getMessage();
+    }
+});

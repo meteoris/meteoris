@@ -1,0 +1,92 @@
+<template name="meteoris_userView">
+
+    <section class="content-header">
+        <h1>User - View</h1>
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/meteoris/user">User</a></li>
+            <li class="active">view</li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <div class="box">
+            {{#with model}}
+            <div class="box-header">
+                <div class="toolbar">
+                    <h3 class="pull-left">Detail User {{profile.name}}</h3>
+                    <div class="toolbar pull-right">
+                        <a href="/meteoris/user" class="btn btn-default">Back</a> 
+                        <a href="/meteoris/user/update/{{_id}}" class="btn btn-info">Update</a>
+                        <a id="btnRemove" class="btn btn-danger">Remove</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">                                
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><b>Email</b></td>
+                            <td>{{emails.[0].address}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Name</b></td>
+                            <td>{{profile.name}}</td>
+                        </tr>                
+                        <tr>
+                            <td><b>Role Group</b></td>
+                            <td>{{profile.group}}</td>
+                        </tr>    
+                        <tr>
+                            <td><b>Created at</b></td>
+                            <td>{{meteoris_formatter "dateTime" createdAt}}</td>
+                        </tr>                            
+                    </tbody>
+                </table>                        
+            </div>
+            {{/with}} 
+        </div>
+    </section> 
+
+
+    <!--    <div class="container">
+            Breadcrumbs
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="/meteoris/user">User</a></li>
+                <li class="active">View</li>
+            </ol>
+    
+            {{#with model}}
+            <div class="title">
+                <h3 class="pull-left">View User #{{_id}}</h3>
+                <div class="toolbar pull-right">
+                    <a href="/meteoris/user" class="btn btn-default">Back</a> 
+                    <a href="/meteoris/user/update/{{_id}}" class="btn btn-info">Update</a>
+                    <a id="btnRemove" class="btn btn-danger">Remove</a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><b>Email</b></td>
+                        <td>{{emails.[0].address}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Name</b></td>
+                        <td>{{profile.name}}</td>
+                    </tr>                
+                    <tr>
+                        <td><b>Role Group</b></td>
+                        <td>{{profile.group}}</td>
+                    </tr>    
+                    <tr>
+                        <td><b>Created at</b></td>
+                        <td>{{meteoris_formatter "dateTime" createdAt}}</td>
+                    </tr>                            
+                </tbody>
+            </table>        
+            {{/with}}
+        </div>-->
+</template>

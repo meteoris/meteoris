@@ -1,0 +1,51 @@
+<template name="meteoris_userSettings">
+	<section class="content-header">
+        <h1>User - Settings</h1>
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/meteoris/user">User</a></li>
+            <li class="active">settings</li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <div class="box">
+            <div class="box-header">
+                <div class="toolbar">
+                    <div class="pull-left">
+                        <h3 class="pull-left">Facebook</h3>
+                    </div>   
+                    <div class="quick-search pull-right col-xs-12 col-md-3">
+                        <!-- <div class="input-group">
+                            <input type="text" id="search" class="form-control" placeholder="Type Here to Search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                            </span> 
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">         	
+				{{#unless serviceFacebook}}
+				<div class="alert alert-info" role="alert">Service Not Configured, Please Configure Now!!</div>
+				{{/unless}}
+
+				<form id="meteoris_userSettings">
+					<div class="form-group">
+						<label for="name" class="control-label">App ID *</label>
+						<input type="text" id="appId" value="{{serviceFacebook.appId}}" placeholder="App ID" class="form-control">
+						<span class="help-block"></span>
+					</div>
+					<div class="form-group">
+						<label for="name" class="control-label">App Secret *</label>
+						<input type="text" id="appSecret" value="{{serviceFacebook.secret}}" placeholder="App Secret" class="form-control">
+						<span class="help-block"></span>
+					</div>
+					<button id="btnSave" type="submit" class="btn btn-success">Save Changes</button>
+					<a href="/meteoris/user" class="btn btn-default">Back</a>
+				</form>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+    </section><!-- /.content --> 
+</template>

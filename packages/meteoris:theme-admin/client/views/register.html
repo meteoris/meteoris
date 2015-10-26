@@ -1,0 +1,16 @@
+<template name="meteoris_themeAdminRegister">
+    {{#AdminLTE skin=model.skin}}  
+    <div class="register-page">
+        <div class="register-box">
+            <div class="register-logo">
+                <a href="#">{{model.logoLarge}}</a>
+            </div><!-- /.login-logo -->
+            <div class="register-box-body">
+                <p class="login-box-msg">Register a new membership</p>
+                {{> Template.dynamic template=content}}                
+            </div><!-- /.login-box-body -->
+        </div><!-- /.login-box -->
+    </div><!-- /.login-page -->
+    {{> meteoris_flash}}
+    {{/AdminLTE}}
+</template>

@@ -1,0 +1,45 @@
+<template name="meteoris_themeAdminSettingMenu">
+    <div class="modal fade" id="meteoris_themeAdminSettingForm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add Menu</h4>
+                </div>
+                {{#if Template.subscriptionsReady}}
+                {{#with model}}
+                <form id="menuForm" class="form-horizontal">
+                    <div class="modal-body">
+                        <div class="form-group {{#if error 'title'}}has-error{{/if}}">
+                            <label for="title" class="col-sm-2 control-label">Title *</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="title" value="{{title}}" placeholder="Title" class="form-control" autofocus="true">
+                                <span class="help-block">{{error "title"}}</span>
+                            </div>
+                        </div>
+                        <div class="form-group {{#if error 'url'}}has-error{{/if}}">
+                            <label for="url" class="col-sm-2 control-label">Url *</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="url" value="{{url}}" placeholder="Url" class="form-control">
+                                <span class="help-block">{{error "url"}}</span>
+                            </div>
+                        </div>
+                        <div class="form-group {{#if error 'icon'}}has-error{{/if}}">
+                            <label for="icon" class="col-sm-2 control-label">Icon</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="icon" value="{{icon}}" placeholder="Icon" class="form-control">
+                                <span class="help-block">{{error "icon"}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="btnPushToMenu">Submit</button>
+                    </div>
+                </form>
+                {{/with}}
+                {{/if}}
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</template>

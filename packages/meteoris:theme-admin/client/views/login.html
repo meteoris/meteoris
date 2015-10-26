@@ -1,0 +1,16 @@
+<template name="meteoris_themeAdminLogin">
+    {{#AdminLTE skin=model.skin}}  
+    <div class="login-page">
+        <div class="login-box">
+            <div class="login-logo">
+                <a href="#">{{model.logoLarge}}</a>
+            </div><!-- /.login-logo -->
+            <div class="login-box-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+                {{> Template.dynamic template=content}}                
+            </div><!-- /.login-box-body -->
+        </div><!-- /.login-box -->
+    </div><!-- /.login-page -->
+    {{> meteoris_flash}}
+    {{/AdminLTE}}
+</template>
