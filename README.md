@@ -7,7 +7,7 @@ If you prefer using the old version of meteoris, please use this version https:/
 
 #### 1. Install Meteor, Create New Project & Download Required Packages
 
-```
+```js
 #install meteor
 curl https://install.meteor.com/ | sh
 
@@ -31,7 +31,7 @@ meteor remove autopublish
 
 The content of each template is using navbar and sidebar Admin LTE style. Make sure you are using correct theme name "meteoris_themeAdmin_hookNavbar" for sidebar, and "meteoris_themeAdmin_hookSidebar" for navbar.
 
-```
+```html
 <template name="meteoris_themeAdmin_hookNavbar">
     <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
@@ -74,7 +74,7 @@ The content of each template is using navbar and sidebar Admin LTE style. Make s
 
 
 
-```
+```js
 var ctrl = new Meteoris.UserController();
 
 Template.meteoris_themeAdmin_hookNavbar.events = {
@@ -87,7 +87,7 @@ Template.meteoris_themeAdmin_hookNavbar.events = {
 
 
 
-```
+```html
 <template name="meteoris_themeAdmin_hookSidebar">
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
@@ -166,7 +166,7 @@ root/
 Meteoris using Kadira Flow Router to linking between pages. Because we are using modular technique, assume that we are using my meteor account called "radiegtya" and using module name called "site". So we should make folder under root folder called "radiegtya:site". To use modular router, simply follow this step:
 
 - create router file on "root/radiegtya:site/lib/router.js", and type this code
-```
+```js
 /**
 create group routes, so every router has prefix radiegtya
 */
@@ -193,7 +193,7 @@ localhost:3000/radiegtya/site
 Controller actually just a method to be called inside your template js, and this will make your code more modular and readable. 
 
 - Create controller file on "root/radiegtya:site/lib/controller/SiteController.js"
-```
+```js
 /*
 create a namespace called Radiegtya.SiteController
 */
@@ -228,7 +228,7 @@ Radiegtya.SiteController = Meteoris.Controller.extend({
 **3.4. Creating Views Page for Site** 
 
 - create views index file on "root/radiegtya:site/client/views/index.html". Look at the template naming convention, it use "meteorusername_moduleAction" namespacing, so for this views we are gonna use "radiegtya_siteIndex". Which is "radiegtya" for meteor username, "site" for the module name, and "Index" in camel case after site as action name.
-```
+```html
 <template name="radiegtya_siteIndex">
 	<div class="content">
 		<div class="box">
@@ -245,7 +245,7 @@ Radiegtya.SiteController = Meteoris.Controller.extend({
 because we are installing meteoris:theme-admin, you can use adminLTE styling and html inside your views html file. We are using meteor example to make You more familiar with the code.
 
 - Don't forget to add the js file for the index. Create this file on "root/radiegtya:site/client/views/index.js"
-```
+```js
 var ctrl = new Radiegtya.SiteController();
 
 /**
@@ -307,7 +307,7 @@ it will also installing it's dependencies, which are:
 - Meteoris Package to show Flash/Toast Error/Success
 
 how to use in your js file:
-```
+```js
 //set flash message example
 Meteoris.Flash.set('success', 'Data Successfully added');
 Meteoris.Flash.set('danger', 'Data Failed to be added');
@@ -315,7 +315,7 @@ Meteoris.Flash.set('danger', 'Data Failed to be added');
 
 how to use in your html file:
 
-```
+```html
 <!-- Simply place this code on your html view anywhere -->
 {{> meteoris_flash}}
 ```
@@ -323,7 +323,7 @@ how to use in your html file:
 #### **1.2. meteoris:form-validation**
 this Meteoris.FormValidation extension depends on collection2 and simpleschema:
 
-```
+```js
 AccountType = new Mongo.Collection("accountType");
 
 var schemas = new SimpleSchema({
@@ -339,7 +339,7 @@ AccountType.attachSchema(schemas);
 
 - how to use in your js helper:
 
-```
+```js
     /* show error message on view */
     error: function(field) {
         return Meteoris.FormValidation.error(YourCollectionName, field);
@@ -348,7 +348,7 @@ AccountType.attachSchema(schemas);
 
 - how to use in your html view:
 
-```
+```html
         <div class="form-group {{#if error 'name'}}has-error{{/if}}">
             <label for="name" class="control-label">Kelas Akun *</label>
             <input type="text" id="name" value="{{name}}" placeholder="Kelas Akun" class="form-control" autofocus="true">
@@ -361,7 +361,7 @@ AccountType.attachSchema(schemas);
 - this Meteoris.Formatter extension used for formatting anything like date, datetime, currency etc
 - this require lepozepo:accounting and momentjs:moment to works
 - how to use in your html view:
-```
+```html
 {{meteoris_formatter 'the function name' firstParam secondParam}}
 ```
 - available function name:
@@ -377,11 +377,11 @@ AccountType.attachSchema(schemas);
 #### 1.4. meteoris:grid-view
 - this Meteoris.GridView extension used for sorting your table header ascending or descending.
 - how to use in your html view:
-```
+```html
 <th id="btnSortName" class="{{meteoris_gridViewSortClass 'name'}}">Name</th>
 ```
 - how to use in your js events:
-```
+```js
     Template.accountTypeIndex.events = {
         /* sorting by parameter */
         'click #btnSortName': function(e) {
@@ -409,7 +409,7 @@ meteor add meteoris:theme-admin
 a. In your app client folder, create hook folder and inside it, add this template code. 
 b. You can change everything such as loggedin user, global search, and menus inside the template as you wish 
 
-```
+```html
 <!-- In your app client folder, create hook folder and inside it, add this template code. -->
 <!-- You can change everything such as loggedin user, global search, and menus inside the template as you wish -->
 
@@ -418,6 +418,7 @@ b. You can change everything such as loggedin user, global search, and menus ins
     <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
+            {{#if currentUser}}
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
@@ -428,6 +429,7 @@ b. You can change everything such as loggedin user, global search, and menus ins
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
+            {{/if}}
             <!--search form--> 
             <form action="#" method="get" class="sidebar-form">
                 <div class="input-group">
@@ -441,8 +443,10 @@ b. You can change everything such as loggedin user, global search, and menus ins
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
-                <!-- Uncomment this if you want to user meteoris:role functionality -->
+                <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                <!--Uncomment this if you want to hide this menu using the power of meteoris:role-->
                 <!--{{#if meteoris_roleUserIsInGroup "admin"}}-->
+                <li class="header">ADMIN AREA</li>                
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-gears"></i>
@@ -451,8 +455,6 @@ b. You can change everything such as loggedin user, global search, and menus ins
                     </a>
                     <ul class="treeview-menu">                        
                         <li><a href="/meteoris/theme-admin/setting"><i class="fa fa-laptop"></i> Theme Admin Setting</a></li>                        
-                        
-                        <!-- Install meteoris:role and meteoris:user to be able using this link -->
                         <li><a href="/meteoris/user"><i class="fa fa-users"></i> Users Management</a></li>                        
                         <li><a href="/meteoris/user/settings"><i class="fa fa-user"></i> User Settings</a></li>                                         
                         <li><a href="/meteoris/role"><i class="fa fa-flag-o"></i> Role Management</a></li>                                                
@@ -470,10 +472,11 @@ b. You can change everything such as loggedin user, global search, and menus ins
 a. In your app client folder, create hook folder and inside it, add this template code. 
 b. You can change everything such as notification, current logged in user, user profile menu etc inside the template as you wish 
 
-```
+```html
 <template name="meteoris_themeAdmin_hookNavbar">
     <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+            {{#if currentUser}}
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -494,14 +497,31 @@ b. You can change everything such as notification, current logged in user, user 
                             <a href="#" class="btn btn-default btn-flat">Profile</a>
                         </div>
                         <div class="pull-right">
-                            <a href="#" id="btnLogout" class="btn btn-default btn-flat">Sign out</a>
+                            <a href="#" id="btnLogout" class="btn btn-default btn-flat">Logout</a>
                         </div>
                     </li>
                 </ul>
             </li>
+            {{else}}
+            <li>
+                <a href="/meteoris/user/login">Login</a>
+            </li>
+            {{/if}}
         </ul>
     </div>
 </template>
+
+```
+c. add js file according to the template to get some event, and helper
+
+```
+var ctrl = new Meteoris.UserController();
+
+Template.meteoris_themeAdmin_hookNavbar.events = {
+    'click #btnLogout': function(){
+        ctrl.logout();
+    }
+};
 
 ```
 
@@ -530,7 +550,7 @@ b. You can change everything such as notification, current logged in user, user 
 
 #### 1. Check whether current logged in user is in role or not in Collection/Server:
 
-```
+```js
 //you can use this code on collection-allow or on server
 Meteoris.Role.userIsInRole(collection, action);
 
@@ -566,7 +586,7 @@ function authenticating() {
 
 #### 2. Check whether current logged in user is in group or not in Collection/Server:
 
-```
+```js
 //you can use this code on collection-allow or on server
 Meteoris.Role.userIsInGroup(groupName);
 
@@ -601,7 +621,7 @@ function authenticating() {
 
 #### 3. Check whether current logged in user is in role or not in Client template:
 
-```
+```html
 //you can use this code on client template html
 {{#if meteoris_roleUserIsInRole "collectionName" "actionName"}}
 <!-- Your logic here -->
@@ -615,7 +635,7 @@ function authenticating() {
 
 #### 4. Check whether current logged in user is in group or not in Client template:
 
-```
+```html
 //you can use this code on client template html
 {{#if meteoris_roleUserIsInGroup "groupName"}}
 <!-- Your logic here -->
