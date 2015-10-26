@@ -53,7 +53,7 @@ localstorage@1.0.5
 logging@1.0.8
 meteor@1.1.9
 meteor-base@1.0.1
-meteoris:core@0.2.0
+meteoris:core@0.2.1
 meteoris:flash@0.0.2
 meteoris:form-validation@0.0.1
 meteoris:formatter@0.0.1

@@ -8,13 +8,26 @@
 **0. QUICKSTART**
 ----------
 
-#### 1. Download This Packages
+#### 1. Install Meteor, Create New Project & Download This Packages
 
 ```
+#install meteor
+curl https://install.meteor.com/ | sh
+
+#create new meteor project
+meteor create my-meteoris-app
+
+#the main module
 meteor add meteoris:core
+
+#another important module
 meteor add meteoris:theme-admin
 meteor add meteoris:user
 meteor add meteoris:role
+
+#remove meteor unused package
+meteor remove insecure
+meteor remove autopublish
 ```
 
 #### 2. Create hooked Navbar and Sidebar inside your "root/client/hook" folder
@@ -293,6 +306,8 @@ meteor add meteoris:core
 it will also installing it's dependencies, which are:
 
 #### 1.1. meteoris:flash
+- Meteoris Package to show Flash/Toast Error/Success
+
 how to use in your js file:
 ```
 //set flash message example
@@ -498,6 +513,7 @@ b. You can change everything such as notification, current logged in user, user 
 ---------------------------------------------------------------------
 
 - NB: This package depends on Meteoris Theme Admin
+- The First Registered user will be assigned to admin group by default
 
 #### **You can use this main router:**
 
