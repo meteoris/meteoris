@@ -514,7 +514,7 @@ b. You can change everything such as notification, current logged in user, user 
 ```
 c. add js file according to the template to get some event, and helper
 
-```
+```js
 var ctrl = new Meteoris.UserController();
 
 Template.meteoris_themeAdmin_hookNavbar.events = {
