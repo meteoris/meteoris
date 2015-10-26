@@ -2,7 +2,7 @@ Package.describe({
     name: 'meteoris:core',
     version: '0.2.0',
     summary: 'Meteoris Core System.',
-    git: '',
+    git: 'https://github.com/meteoris/meteoris',
     documentation: 'README.md'
 });
 

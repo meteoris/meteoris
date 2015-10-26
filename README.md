@@ -1,11 +1,9 @@
-/**
  * This Code was created on Oct 2015
  * If you find any bug, unreadable code, messy code, potential bug code, etc
  * Please contact me at:
  * Ega Radiegtya / radiegtya@yahoo.co.id / 085641278479
  * Or Directly make issue on github
- */
-@NEXTUPDATE "Please add Mugen and Apigen features"
+ * @NEXTUPDATE "Please add Mugen and Apigen features"
 
 **0. QUICKSTART**
 ----------
@@ -64,6 +62,21 @@ The content of each template is using navbar and sidebar Admin LTE style. Make s
 ```
 "at root/client/hook/navbar.html"
 
+
+
+```
+var ctrl = new Meteoris.UserController();
+
+Template.meteoris_themeAdmin_hookNavbar.events = {
+    'click #btnLogout': function(){
+        ctrl.logout();
+    }
+};
+```
+"at root/client/hook/navbar.js"
+
+
+
 ```
 <template name="meteoris_themeAdmin_hookSidebar">
     <!-- Left side column. contains the logo and sidebar -->
@@ -95,8 +108,10 @@ The content of each template is using navbar and sidebar Admin LTE style. Make s
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
-                <!--Uncomment this if you want to use the power of meteoris:role and meteoris:user-->
+                <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                <!--Uncomment this if you want to hide this menu using the power of meteoris:role-->
                 <!--{{#if meteoris_roleUserIsInGroup "admin"}}-->
+                <li class="header">ADMIN AREA</li>                
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-gears"></i>
