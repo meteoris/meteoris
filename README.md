@@ -7,7 +7,7 @@ If you prefer using the old version of meteoris, please use this version https:/
 
 #### 1. Install Meteor, Create New Project & Download Required Packages
 
-```js
+```
 #install meteor
 curl https://install.meteor.com/ | sh
 
@@ -29,7 +29,7 @@ meteor remove autopublish
 
 #### 2. Create hooked Navbar and Sidebar inside your "root/client/hook" folder
 
-The content of each template is using navbar and sidebar Admin LTE style. Make sure you are using correct theme name "meteoris_themeAdmin_hookNavbar" for sidebar, and "meteoris_themeAdmin_hookSidebar" for navbar.
+We can easily hook navbar and sidebar to customize our own sidebar and navbar although we are using meteoris:admin-theme template. The content of each template is using navbar and sidebar Admin LTE style. Make sure you are using correct theme name "meteoris_themeAdmin_hookNavbar" for sidebar, and "meteoris_themeAdmin_hookSidebar" for navbar.
 
 ```html
 <template name="meteoris_themeAdmin_hookNavbar">
@@ -278,11 +278,13 @@ Now finally access this route to check your apps.
 ```
 localhost:3000/radiegtya/site
 ```
+![enter image description here](https://piyiku.s3-ap-southeast-1.amazonaws.com/YFPDHg4kghhiEFYJ3-2015-10-26-8-20-45-am-meteoris1.png)
+
 Awesome! We are successfully creating our simple app in MVC and Modular way with very easy setup. Ofc with amazing template which is reusable.
 You can also use this code to create a meteor package easily.
 
 **3.5. Creating Collection** 
- You can use aldeed:collection2 and aldeed:simple-schema collection here. Future explanation will be comming soon.
+ You can use aldeed:collection2, aldeed:simple-schema, and dburles:collection-helpers in our Meteoris collection. Future explanation will be comming soon.
   ======== COMING SOON =========
 
 **3.6. Creating Server** 
@@ -304,7 +306,9 @@ meteor add meteoris:core
 it will also installing it's dependencies, which are:
 
 #### 1.1. meteoris:flash
-- Meteoris Package to show Flash/Toast Error/Success
+Meteoris Package to show Flash/Toast Error/Success in your bottom right screen.
+
+![enter image description here](https://piyiku.s3-ap-southeast-1.amazonaws.com/YFPDHg4kghhiEFYJ3-2015-10-26-8-27-55-am-success.png)
 
 how to use in your js file:
 ```js
@@ -321,7 +325,9 @@ how to use in your html file:
 ```
 
 #### **1.2. meteoris:form-validation**
-this Meteoris.FormValidation extension depends on collection2 and simpleschema:
+Meteoris package to validate form easily. This Meteoris.FormValidation extension depends on collection2 and simpleschema:
+
+![enter image description here](https://piyiku.s3-ap-southeast-1.amazonaws.com/YFPDHg4kghhiEFYJ3-2015-10-26-8-29-27-am-validation.png)
 
 ```js
 AccountType = new Mongo.Collection("accountType");
@@ -361,21 +367,40 @@ AccountType.attachSchema(schemas);
 - this Meteoris.Formatter extension used for formatting anything like date, datetime, currency etc
 - this require lepozepo:accounting and momentjs:moment to works
 - how to use in your html view:
+
+![enter image description here](https://piyiku.s3-ap-southeast-1.amazonaws.com/YFPDHg4kghhiEFYJ3-2015-10-26-8-31-28-am-formatter.png)
+
 ```html
 {{meteoris_formatter 'the function name' firstParam secondParam}}
 ```
 - available function name:
 ```
-    - date (date, format)
-    - dateTime (date, format)
+    - date (date)
+    - dateTime (date)
     - elapsedTime (date)
     - currency (value)
     - combodate (date)
     - combodateEmpty (date)
 ```
 
+- example date formatting
+```html
+{{meteoris_formatter 'date' getCurrDate}}
+```
+
+```js
+Template.someTheme.helpers({
+	getCurrDate: function(){
+		return new Date();
+	}
+});
+```
+
 #### 1.4. meteoris:grid-view
 - this Meteoris.GridView extension used for sorting your table header ascending or descending.
+
+![enter image description here](https://piyiku.s3-ap-southeast-1.amazonaws.com/YFPDHg4kghhiEFYJ3-2015-10-26-8-35-34-am-ascdesc.png)
+
 - how to use in your html view:
 ```html
 <th id="btnSortName" class="{{meteoris_gridViewSortClass 'name'}}">Name</th>
@@ -393,7 +418,7 @@ AccountType.attachSchema(schemas);
 #2. Install Meteoris Theme Admin (Not Required But It will better to be installed)
 
 This current version of meteoris only have 1 theme which is called meteoris:theme-admin.
-This theme using popular Admin LTE for it's UI, <a href="">Click here</a> for more info about Admin LTE.
+This theme using popular Admin LTE for it's UI, <a href="https://almsaeedstudio.com/preview">Click here</a> for more info about Admin LTE.
 
 To install this theme, simply add meteor package: 
 ```
@@ -403,6 +428,8 @@ meteor add meteoris:theme-admin
 #### **How to use**
 
 1. You can do general setting of this theme by targetting this url /meteoris/theme-admin/setting
+
+![enter image description here](https://piyiku.s3-ap-southeast-1.amazonaws.com/YFPDHg4kghhiEFYJ3-2015-10-26-8-43-30-am-theme-setting.png)
 
 2. You can easily hook sidebar in html file:
 
@@ -532,19 +559,22 @@ Template.meteoris_themeAdmin_hookNavbar.events = {
 - The First Registered user will be assigned to admin group by default
 
 #### You can use this main router:
-```
+
 '/meteoris/user', 		**#to manage user as admin**
+![enter image description here](https://piyiku.s3-ap-southeast-1.amazonaws.com/YFPDHg4kghhiEFYJ3-2015-10-26-8-36-58-am-meteoris-user.png)
 
-'/meteoris/user/login', 		**#to logged in the user**
-
-'/meteoris/user/register',		**#to registering user**
+'/meteoris/user/login', 		**#to logged in the user** and '/meteoris/user/register',		**#to registering user**
+![enter image description here](https://piyiku.s3-ap-southeast-1.amazonaws.com/YFPDHg4kghhiEFYJ3-2015-10-26-8-38-36-am-login.png)
 
 '/meteoris/user/profile'		**#to updating current logged in user profile**
+![enter image description here](https://piyiku.s3-ap-southeast-1.amazonaws.com/YFPDHg4kghhiEFYJ3-2015-10-26-8-39-59-am-user-profile.png)
 
 '/meteoris/user/settings',		**#to setting user oauth account**
-```
+![enter image description here](https://piyiku.s3-ap-southeast-1.amazonaws.com/YFPDHg4kghhiEFYJ3-2015-10-26-8-41-10-am-user-oauth.png)
 
 #4. Install Meteoris Role (Not Required but it will be better to be installed)
+
+![enter image description here](https://piyiku.s3-ap-southeast-1.amazonaws.com/YFPDHg4kghhiEFYJ3-2015-10-26-8-42-02-am-role.png)
 
 #### **How to use**
 
