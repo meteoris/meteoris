@@ -1,14 +1,11 @@
- * This Code was created on Oct 2015
- * If you find any bug, unreadable code, messy code, potential bug code, etc
- * Please contact me at:
- * Ega Radiegtya / radiegtya@yahoo.co.id / 085641278479
- * Or Directly make issue on github
- * @NEXTUPDATE "Please add Mugen and Apigen features"
+# WHAT IS METEORIS?
+Meteoris is a Realtime MVC + Modular Javascript Framework based on Meteor 1.2.0.
+This is the latest version of Meteoris out there. In this version, Meteoris still doesn't have a code generator.
+If you prefer using the old version of meteoris, please use this version https://github.com/radiegtya/meteoris-v1.
 
-**0. QUICKSTART**
-----------
+#QUICKSTART
 
-#### 1. Install Meteor, Create New Project & Download This Packages
+#### 1. Install Meteor, Create New Project & Download Required Packages
 
 ```
 #install meteor
@@ -296,9 +293,10 @@ You can use reywood:publish-composite here. Future explanation coming soon.
 For now You can refer to the below this Quick Start article.
 
 
+====================================================================================
 
-**1. INSTALLATION**
-------------------------
+#1. INSTALLATION
+
 ```
 meteor add meteoris:core
 ```
@@ -392,8 +390,7 @@ AccountType.attachSchema(schemas);
     }
 ```
 
-**2. Install Meteoris Theme Admin (Not Required But It will better to be installed) **
--------------------------------
+#2. Install Meteoris Theme Admin (Not Required But It will better to be installed)
 
 This current version of meteoris only have 1 theme which is called meteoris:theme-admin.
 This theme using popular Admin LTE for it's UI, <a href="">Click here</a> for more info about Admin LTE.
@@ -509,22 +506,25 @@ b. You can change everything such as notification, current logged in user, user 
 ```
 
 
-**3. Meteoris User (Not Required but it will be better to be installed)**
----------------------------------------------------------------------
+#3. Meteoris User (Not Required but it will be better to be installed)
 
 - NB: This package depends on Meteoris Theme Admin
 - The First Registered user will be assigned to admin group by default
 
-#### **You can use this main router:**
-
+#### You can use this main router:
+```
 '/meteoris/user', 		**#to manage user as admin**
-'/meteoris/user/login', 		**#to logged in the user**
-'/meteoris/user/register',		**#to registering user**
-'/meteoris/user/profile'		**#to updating current logged in user profile**
-'/meteoris/user/settings',		**#to setting user oauth account**
 
-**4. Install Meteoris Role (Not Required)**
-------------------------
+'/meteoris/user/login', 		**#to logged in the user**
+
+'/meteoris/user/register',		**#to registering user**
+
+'/meteoris/user/profile'		**#to updating current logged in user profile**
+
+'/meteoris/user/settings',		**#to setting user oauth account**
+```
+
+#4. Install Meteoris Role (Not Required but it will be better to be installed)
 
 #### **How to use**
 
