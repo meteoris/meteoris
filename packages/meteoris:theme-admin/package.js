@@ -1,6 +1,6 @@
 Package.describe({
     name: 'meteoris:theme-admin',
-    version: '0.0.4',
+    version: '0.0.5',
     summary: 'Admin Theme for any meteoris apps.',
     git: 'https://github.com/meteoris/meteoris/tree/master/packages/meteoris:theme-admin',
     documentation: 'README.md'
@@ -17,7 +17,7 @@ Package.onUse(function(api) {
         'fortawesome:fontawesome@4.0.0',
     ], 'client');
 
-    api.use([        
+    api.use([
         'meteoris:core@0.0.0',
 //        'deps',
 //        'session',
@@ -27,9 +27,10 @@ Package.onUse(function(api) {
         'zephraph:namespace@1.0.0',
         'aldeed:collection2@2.0.0',
         'aldeed:simple-schema@1.0.0',
+        'rochal:slimscroll@1.0.0',
     ], ['client', 'server']);
 
-    api.addFiles([        
+    api.addFiles([
         'lib/controllers/ThemeAdminController.js',
         'lib/collections/ThemeAdmin.js',
         'lib/router.js',
@@ -40,6 +41,9 @@ Package.onUse(function(api) {
     ], 'server');
 
     api.addFiles([
+        /* assets */
+        'client/assets/adminlte-app.js',
+        /* views */
         'client/views/main.html',
         'client/views/main.js',
         'client/views/login.html',
@@ -50,8 +54,8 @@ Package.onUse(function(api) {
         'client/views/header.js',
         'client/views/sidebar.html',
         'client/views/control-sidebar.html',
-        'client/views/footer.html',        
-        'client/views/footer.js',        
+        'client/views/footer.html',
+        'client/views/footer.js',
         'client/views/setting.html',
         'client/views/setting.js',
         'client/views/setting-menu.html',

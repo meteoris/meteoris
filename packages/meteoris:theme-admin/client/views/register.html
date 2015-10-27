@@ -3,7 +3,7 @@
     <div class="register-page">
         <div class="register-box">
             <div class="register-logo">
-                <a href="#">{{model.logoLarge}}</a>
+                <a href="#">{{{model.logoLarge}}}</a>
             </div><!-- /.login-logo -->
             <div class="register-box-body">
                 <p class="login-box-msg">Register a new membership</p>
@@ -13,4 +13,19 @@
     </div><!-- /.login-page -->
     {{> meteoris_flash}}
     {{/AdminLTE}}
+    
+    <!--Overwrite the current mfactory:admin-lte plugin styling for register page only-->
+    <style>
+        html{
+            background:#d2d6de
+        }        
+        body > div > div > .wrapper{
+            background:#d2d6de !important;
+        }
+        .btn-google {
+            color: #fff;
+            background-color: #dd4b39;
+            border-color: rgba(0,0,0,0.2);
+        }
+    </style>
 </template>

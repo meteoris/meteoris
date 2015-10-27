@@ -3,7 +3,7 @@
     <div class="login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="#">{{model.logoLarge}}</a>
+                <a href="#">{{{model.logoLarge}}}</a>
             </div><!-- /.login-logo -->
             <div class="login-box-body">
                 <p class="login-box-msg">Sign in to start your session</p>
@@ -13,4 +13,23 @@
     </div><!-- /.login-page -->
     {{> meteoris_flash}}
     {{/AdminLTE}}
+
+    <!--Overwrite the current mfactory:admin-lte plugin styling for login page only-->
+    <style>
+        html{
+            background:#d2d6de
+        }        
+        body > div > div > .wrapper{
+            background:#d2d6de !important;
+        }
+        .btn-google {
+            color: #fff;
+            background-color: #dd4b39;
+            border-color: rgba(0,0,0,0.2);
+        }
+        .checkbox input[type="checkbox"]{
+            position: static;
+            margin-left: 0;
+        }
+    </style>
 </template>
