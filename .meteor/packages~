@@ -16,6 +16,11 @@ standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
+<<<<<<< HEAD
+#autopublish             # Publish all data to the clients (for prototyping)
+#insecure                # Allow all DB writes from clients (for prototyping)
+=======
+>>>>>>> d1e026c67381e4d760dd51b6325c3aa528aaa2f5
 meteoris:core
 meteoris:theme-admin
 meteoris:role
