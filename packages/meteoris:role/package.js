@@ -17,7 +17,6 @@ Package.onUse(function(api) {
         'ecmascript',
         'templating',
         'jquery',
-        'reactive-var',
         'meteoris:core@0.0.0',
         'meteoris:grid-view@0.0.0',
         'meteoris:flash@0.0.0',
@@ -30,6 +29,7 @@ Package.onUse(function(api) {
     api.use([
         'mongo',
         'accounts-base',
+        'reactive-var',
         'accounts-password',
         'kadira:flow-router@2.0.0',
         'kadira:blaze-layout@2.0.0',

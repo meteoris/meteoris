@@ -13,18 +13,19 @@ Meteoris.Role = {
     PUT: "PUT",
     DELETE: "DELETE",
     userIsInRolePromise: function(collection, action) {
+        var isAuth = new ReactiveVar();
         Meteor.call("Meteoris.Role.userIsInRole", collection, action, function(err, result) {
             if (err) {
                 return false;
                 throw new Meteor.Error(err);
             } else {
-                Session.set("isAuth" + collection + action, result);
+                isAuth.set(result);
             }
         });
 
         var promise = new Promise(function(resolve, reject) {
             Meteor.setTimeout(function() {
-                resolve(Session.get("isAuth" + collection + action));
+                resolve(isAuth.get());
             }, 500);
         });
                 

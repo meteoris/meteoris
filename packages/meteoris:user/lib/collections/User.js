@@ -5,7 +5,7 @@ Meteor.users.allow({
         return Meteoris.Role.userIsInGroup("admin");
     },
     update: function(userId, doc) {
-        return Meteoris.Role.userIsInGroup("admin");
+        return userId == doc._id;
     },
     remove: function(userId, doc) {
         return Meteoris.Role.userIsInGroup("admin");
