@@ -49,6 +49,7 @@ lepozepo:accounting@1.0.0
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
+matteodem:server-session@0.4.2
 meteor@1.1.9
 meteor-base@1.0.1
 meteoris:core@0.2.2
@@ -58,7 +59,7 @@ meteoris:formatter@0.0.2
 meteoris:grid-view@0.0.2
 meteoris:role@0.0.2
 meteoris:theme-admin@0.0.5
-meteoris:user@0.0.5
+meteoris:user@0.0.7
 mfactory:admin-lte@0.0.2
 minifiers@1.1.7
 minimongo@1.0.10

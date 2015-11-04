@@ -36,12 +36,10 @@ Meteoris.Role = {
             if (err) {
                 return false;
                 throw new Meteor.Error(err);
-            } else {
-                Session.set("isAuth" + collection + action, result);
             }
         });
 
-        return Session.get("isAuth" + collection + action);
+        return ServerSession.get("Meteoris.Role.userIsInRole" + collection + action);
     },
     userIsInGroup: function(group) {
         var user = Meteor.user();

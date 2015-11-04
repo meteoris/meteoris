@@ -37,7 +37,8 @@ Package.onUse(function(api) {
         'aldeed:collection2@2.0.0',
         'aldeed:simple-schema@1.0.0',
         'dburles:collection-helpers@1.0.0',
-        'reywood:publish-composite@1.0.0',        
+        'reywood:publish-composite@1.0.0',   
+        'matteodem:server-session@0.4.2'
     ], ['client', 'server']);
 
     api.addFiles([

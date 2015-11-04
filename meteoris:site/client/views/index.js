@@ -1,10 +1,13 @@
 var ctrl = new Meteoris.SiteController();
 
+Template.meteoris_siteIndex.onCreated(function(){
+})
+
 /**
 In the template helper section we are using index() method to get object return value from controller. It's because index was the action and also the file name suffix. This structure will make You easier to get jobs done, when your team getting bigger and the code getting bigger.
 */
 Template.meteoris_siteIndex.helpers({
-    myName: function () {
+    myName: function () {        
         return ctrl.index().myName;
     },
     myHobby: function () {

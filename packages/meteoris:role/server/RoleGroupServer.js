@@ -21,7 +21,7 @@ Meteor.publishComposite('meteoris_roleUser', function(doc, sort) {
 
 Meteor.publish('meteoris_roles', function(collection, action) {
     var user = Meteor.user(),
-        fields = {name: 1}
+            fields = {name: 1}
 
     if (!user) {
         this.ready()
@@ -78,6 +78,8 @@ Meteor.methods({
      */
     'Meteoris.Role.userIsInRole': function(collection, action) {
         var user = Meteor.user();
+        
+        console.log("Meteoris.Role.userIsInRole" + collection + action)
 
         if (user) {
             var group = user.profile.group;
@@ -96,14 +98,17 @@ Meteor.methods({
                 });
 
                 if (isInRole) {
+                    ServerSession.set('Meteoris.Role.userIsInRole' + collection + action, true);
                     return true;
                 }
             }
+                        
 
+            ServerSession.set('Meteoris.Role.userIsInRole' + collection + action, false);
             return false;
         } else {
+            ServerSession.set('Meteoris.Role.userIsInRole' + collection + action, false);
             return false;
-            throw new Meteor.Error("Please Login!");
         }
     },
     'Meteoris.Role.addUsersToGroup': function(user, group) {
