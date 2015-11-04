@@ -1,6 +1,7 @@
 var ctrl = new Meteoris.SiteController();
 
 Template.meteoris_siteIndex.onCreated(function(){
+    console.log(Meteoris.User.isExist());
 })
 
 /**

@@ -57,7 +57,7 @@ meteoris:flash@0.0.3
 meteoris:form-validation@0.0.2
 meteoris:formatter@0.0.2
 meteoris:grid-view@0.0.2
-meteoris:role@0.0.2
+meteoris:role@0.0.3
 meteoris:theme-admin@0.0.5
 meteoris:user@0.0.7
 mfactory:admin-lte@0.0.2

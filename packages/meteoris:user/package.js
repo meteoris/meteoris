@@ -40,12 +40,14 @@ Package.onUse(function(api) {
         'aldeed:simple-schema@1.0.0',
         'dburles:collection-helpers@1.0.0',
         'reywood:publish-composite@1.0.0',
+        'matteodem:server-session@0.4.2'
     ], ['client', 'server']);
 
     api.addFiles([
         'lib/collections/User.js',
         'lib/controllers/UserController.js',
         'lib/router.js',
+        'helpers/user.js'
     ], ['client', 'server']);
 
     api.addFiles([

@@ -10,6 +10,15 @@ Meteor.publishComposite('meteoris_user', function(doc) {
 });
 
 Meteor.methods({
+    'Meteoris.User.isExist': function() {
+        var user = Meteor.users.findOne({});
+        if(user){
+            ServerSession.set('Meteoris.User.isExist', true);
+            return true;
+        }
+        ServerSession.set('Meteoris.User.isExist', false);
+        return false;
+    },
     'Meteoris.User.insert': function(doc) {
         validateParams(doc);
         Accounts.createUser(doc);

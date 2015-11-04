@@ -79,8 +79,6 @@ Meteor.methods({
     'Meteoris.Role.userIsInRole': function(collection, action) {
         var user = Meteor.user();
         
-        console.log("Meteoris.Role.userIsInRole" + collection + action)
-
         if (user) {
             var group = user.profile.group;
 

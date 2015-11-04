@@ -5,11 +5,11 @@ Meteoris.RoleGroup = new Mongo.Collection('meteoris_roleGroup');
 var schemas = new SimpleSchema({
     name: {
         type: String,
-        label: 'Nama',
+        label: 'Name',
     },
     description: {
         type: String,
-        label: 'Deskripsi',
+        label: 'Description',
         optional: true,
     },
     roles: {
@@ -19,12 +19,12 @@ var schemas = new SimpleSchema({
     },
     "roles.$.collectionName": {
         type: String,
-        label: "Nama Koleksi",
+        label: "Collection Name",
         optional: true
     },
     "roles.$.actionName": {
         type: String,
-        label: "Nama Aksi",
+        label: "Action Name",
         optional: true
     },
     /* AUTOVALUE */
