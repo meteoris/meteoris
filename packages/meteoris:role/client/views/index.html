@@ -32,31 +32,31 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th rowspan="2"></th>
-                                <th rowspan="2"></th>
-                                <th rowspan="2"></th>
-                                <th rowspan="2" class="text-center">Group</th>
+                                <th rowspan="2" class="text-center" colspan="3" style="vertical-align: middle">Group</th>
                                 {{#each collections}}
-                                <th>{{name}} <button class="btn btn-danger btn-sm btn-remove-collection"><i class="fa fa-fw fa-times"></i></button></th>
+                                <th>{{name}} <button class="btn btn-danger btn-sm btn-remove-collection pull-right" title="remove collection"><i class="fa fa-fw fa-times"></i></button></th>
                                 {{/each}}
                             </tr>
                             <tr>
                                 {{#each collections}}
                                 <th>
-                                    <input type="text" id="role-{{name}}" />
-                                    <a class="btn btn-primary btn-sm btnAddRole" href="#">
-                                        <i class="fa fa-fw fa-plus"></i>
-                                    </a>
-                                    <br>
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control" id="role-{{name}}" placeholder="Add action">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-info btn-flat btnAddRole" title="Add Action Collection"><i class="fa fa-fw fa-plus"></i></button>
+                            </span>
+                        </div>
                         <hr>
-                        <select id="remove-role-{{name}}">
-                            {{#each actions}}
-                            <option value="{{name}}">{{name}}</option>
-                            {{/each}}
-                        </select>
-                        <a class="btn btn-danger btn-sm btnRemoveRole" href="#">
-                            <i class="fa fa-fw fa-times"></i>
-                        </a>
+                        <div class="input-group input-group-sm">
+                            <select id="remove-role-{{name}}" class="form-control">
+                                {{#each actions}}
+                                <option value="{{name}}">{{name}}</option>
+                                {{/each}}
+                            </select>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-info btn-flat btnRemoveRole" title="Remove Action Collection"><i class="fa fa-fw fa-times"></i></button>
+                            </span>
+                        </div>
                         </th>
                         {{else}}
                         <th>
@@ -70,12 +70,14 @@
                             <tr>
 
                                 <td>
-                                    {{#unless isGuest name}}
-                                    <a href="/meteoris/role/assign-users/{{name}}" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-user"></i></a>
-                                    {{/unless}}
-                                    <a href="" class="btn btn-danger btn-sm btn-remove-group"><i class="fa fa-fw fa-times"></i></a>
+                                    <div class="btn-group-vertical">
+                                        {{#unless isGuest name}}
+                                        <a href="/meteoris/role/assign-users/{{name}}" type="button" class="btn btn-info" title="Assign Users"><i class="fa fa-fw fa-user"></i></a>
+                                        {{/unless}}
+                                        <button type="button" class="btn btn-danger btn-remove-group" title="Remove Group"><i class="fa fa-fw fa-times"></i></button>
+                                        <button class="btn btn-primary btnSaveRoleGroup" title="Save Role Group"> <i class="fa fa-fw  fa-save"></i></button>
+                                    </div>
                                 </td>
-                                <td><a href="" class="btn btn-primary btnSaveRoleGroup"> Save</a></td>
                                 <td> <input type="checkbox" value="{{name}}" class="checkAllCollection"/></td>
                                 <td>{{name}} </td>
                                 {{#each collections}}
