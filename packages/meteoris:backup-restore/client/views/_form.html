@@ -1,0 +1,41 @@
+<template name="meteoris_backupRestore_form">
+    <form id="users_form">
+        <input type="hidden" id="id" value="{{config._id}}" />
+        <div class="form-group {{#if error 'host'}}has-error{{/if}}">
+            <label for="host" class="control-label">Host *</label>
+            <input type="text" id="host" value="{{config.host}}" placeholder="Host *" class="form-control" autofocus="true">
+            <span class="help-block">{{error "host"}}</span>
+        </div>
+        <div class="form-group {{#if error 'port'}}has-error{{/if}}">
+            <label for="port" class="control-label">Port *</label>
+            <input type="text" id="port" value="{{config.port}}" placeholder="Port *" class="form-control" autofocus="true">
+            <span class="help-block">{{error "port"}}</span>
+        </div>
+        <div class="form-group {{#if error 'database'}}has-error{{/if}}">
+            <label for="database" class="control-label">Database *</label>
+            <input type="text" id="database" value="{{config.database}}" placeholder="Database *" class="form-control" autofocus="true">
+            <span class="help-block">{{error "database"}}</span>
+        </div>
+        <div class="form-group {{#if error 'username'}}has-error{{/if}}">
+            <label for="username" class="control-label">Username</label>
+            <input type="text" id="username" value="{{config.username}}" placeholder="Username" class="form-control" autofocus="true">
+            <span class="help-block">{{error "username"}}</span>
+        </div>
+        <div class="form-group {{#if error 'password'}}has-error{{/if}}">
+            <label for="password" class="control-label">Password</label>
+            <input type="text" id="password" value="{{config.password}}" placeholder="Password" class="form-control">
+            <span class="help-block">{{error "password"}}</span>
+        </div>
+        <div class="form-group {{#if error 'path'}}has-error{{/if}}">
+            <label for="path" class="control-label">Path Dump *</label>
+            <input type="text" id="path" value="{{config.path}}" placeholder="Path Dump *" class="form-control" autofocus="true">
+            <span class="help-block">{{error "path"}}</span>
+        </div>
+        <div class="form-group {{#if error 'pathUpload'}}has-error{{/if}}">
+            <label for="pathUpload" class="control-label">Path Upload *</label>
+            <input type="text" id="pathUpload" value="{{config.pathUpload}}" placeholder="Path Upload *" class="form-control" autofocus="true">
+            <span class="help-block">{{error "pathUpload"}}</span>
+        </div>
+        <button id="btnSave" type="submit" class="btn btn-success">Save Changes</button>                
+    </form>
+</template>

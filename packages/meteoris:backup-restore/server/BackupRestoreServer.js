@@ -1,17 +1,32 @@
+Meteor.publishComposite('meteoris_backupRestoreConfig', function (doc, sort) {
+    console.log("subscribing some meteoris backup restore config with it's relation");
+    var doc = doc || {};
+    var sort = sort || {};
+    return{
+        find: function () {
+            return Meteoris.BackupRestoreConfig.find(doc, sort);
+        }
+    };
+});
+
 spawn = Npm.require('child_process').spawn;
 
 var BackupRestore = {
+    getConfig: function () {
+        return Meteoris.BackupRestoreConfig.findOne({});
+    },
     /**
      * dump database
      * @return {[type]} [description]
      */
     dump: function () {
-        var host = Meteoris.BackupRestoreConfig.host;
-        var port = Meteoris.BackupRestoreConfig.port;
-        var out = Meteoris.BackupRestoreConfig.path;
-        var username = Meteoris.BackupRestoreConfig.username;
-        var password = Meteoris.BackupRestoreConfig.password;
-        var database = Meteoris.BackupRestoreConfig.database;
+        var config = this.getConfig();
+        var host = config.host;
+        var port = config.port;
+        var out = config.path;
+        var username = config.username ? config.username : "";
+        var password = config.password ? config.password : "";
+        var database = config.database;
 
         var dateString = moment(new Date()).format("YYYY-MM-DD_h:mm:ss");
         var filenameBackupDB = "db-" + dateString;
@@ -34,6 +49,7 @@ var BackupRestore = {
         });
     },
     restore: function (filename) {
+        var config = this.getConfig();
         var tempDir = "backup-db";
 
         //delte temp dir if exist
@@ -43,14 +59,14 @@ var BackupRestore = {
             console.log('stdout: ' + data);
         });
 
-        var path = Meteoris.BackupRestoreConfig.path;
-        var pathUpload = Meteoris.BackupRestoreConfig.pathUpload;
-        var host = Meteoris.BackupRestoreConfig.host;
-        var port = Meteoris.BackupRestoreConfig.port;
-        var out = Meteoris.BackupRestoreConfig.path;
-        var username = Meteoris.BackupRestoreConfig.username;
-        var password = Meteoris.BackupRestoreConfig.password;
-        var database = Meteoris.BackupRestoreConfig.database;
+        var path = config.path;
+        var pathUpload = config.pathUpload;
+        var host = config.host;
+        var port = config.port;
+        var out = config.path;
+        var username = config.username ? config.username : "";
+        var password = config.password ? config.password : "";
+        var database = config.database;
 
         /**
          * first create temp directory
@@ -97,6 +113,18 @@ Meteor.methods({
     },
     "Meteoris.BackupRestore.deleteTempFileUpload": function (path) {
         UploadServer.delete(path);
+    },
+    "Meteoris.BackupRestore.initUploadServer": function () {
+        var config = Meteoris.BackupRestoreConfig.findOne({});
+
+        if (config) {
+            UploadServer.init({
+                tmpDir: config.pathUpload + '/tmp',
+                uploadDir: config.pathUpload,
+                checkCreateDirectories: true, //create the directories for you
+                overwrite: true
+            });
+        }
     }
 });
 
@@ -112,14 +140,41 @@ Meteor.methods({
  */
 
 Meteor.startup(function () {
+    var config = Meteoris.BackupRestoreConfig.findOne({});
+
+    if (!config) {
+        //insert default config
+        Meteoris.BackupRestoreConfig.insert({
+            host: "localhost",
+            port: "3001",
+            path: process.env.PWD + '/.dump/',
+            pathUpload: process.env.PWD + '/.uploads/',
+            username: "",
+            password: "",
+            database: "meteor"
+        }, function (err, result) {
+            if (err) {
+                throw new Meteor.Error(err);
+            } else {
+                console.log("insert default config for meteoris:backup-restore package");
+            }
+        });
+
+    }
+
+    var tmpDir = config ? config.pathUpload + '/tmp' : process.env.PWD + '/.uploads/tmp';
+    var uploadDir = config ? config.pathUpload : process.env.PWD + '/.uploads/';
+
     /**
      * init upload server package
      * @type {[type]}
      */
     UploadServer.init({
-        tmpDir: Meteoris.BackupRestoreConfig.pathUpload + '/tmp',
-        uploadDir: Meteoris.BackupRestoreConfig.pathUpload,
+        tmpDir: tmpDir,
+        uploadDir: uploadDir,
         checkCreateDirectories: true, //create the directories for you
-        overwrite: true,
-    })
+        overwrite: true
+    });
+
+
 });

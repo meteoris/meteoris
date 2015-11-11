@@ -2,9 +2,9 @@ Package.describe({
     name: 'meteoris:backup-restore',
     version: '0.0.1',
     // Brief, one-line summary of the package.
-    summary: '',
+    summary: 'Meteoris package for dump and restore mongo',
     // URL to the Git repository containing the source code for this package.
-    git: '',
+    git: 'https://github.com/meteoris/meteoris/tree/master/packages/meteoris:backup-restore',
     // By default, Meteor will default to using README.md for documentation.
     // To avoid submitting documentation, set this field to null.
     documentation: 'README.md'
@@ -45,6 +45,8 @@ Package.onUse(function (api) {
 
 
     api.addFiles([
+        'lib/collections/BackupRestoreConfig.js',
+        'lib/controllers/BackupRestoreController.js',
         'lib/config.js',
         'lib/router.js',
     ], ['client', 'server']);
@@ -57,6 +59,8 @@ Package.onUse(function (api) {
         'client/assets/upload.js',
         'client/views/index.html',
         'client/views/index.js',
+        'client/views/_form.html',
+        'client/views/_form.js',
     ], 'client');
 
     api.export([
