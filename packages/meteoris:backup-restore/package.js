@@ -1,16 +1,19 @@
 Package.describe({
-    name: 'meteoris:role',
-    version: '0.0.5',
+    name: 'meteoris:backup-restore',
+    version: '0.0.1',
     // Brief, one-line summary of the package.
-    summary: 'Meteoris package for ACL',
+    summary: '',
     // URL to the Git repository containing the source code for this package.
-    git: 'https://github.com/meteoris/meteoris/tree/master/packages/meteoris:role',
+    git: '',
     // By default, Meteor will default to using README.md for documentation.
     // To avoid submitting documentation, set this field to null.
     documentation: 'README.md'
 });
 
-Package.onUse(function(api) {
+Package.onUse(function (api) {
+    api.versionsFrom('1.2.0.2');
+    api.use('ecmascript');
+
     api.versionsFrom('1.2.0.2');
 
     api.use([
@@ -24,55 +27,46 @@ Package.onUse(function(api) {
         'meteoris:form-validation@0.0.0',
         'meteoris:theme-admin@0.0.0',
         'sacha:spin@2.0.0',
+        'tomi:upload-jquery@2.1.8',
     ], 'client');
 
     api.use([
         'mongo',
-        'accounts-base',
-        'reactive-var',
-        'accounts-password',
         'kadira:flow-router@2.0.0',
         'kadira:blaze-layout@2.0.0',
         'zephraph:namespace@1.0.0',
         'aldeed:collection2@2.0.0',
         'aldeed:simple-schema@1.0.0',
         'dburles:collection-helpers@1.0.0',
-        'reywood:publish-composite@1.0.0',   
+        'reywood:publish-composite@1.0.0',
+        'momentjs:moment@2.0.0',
+        'tomi:upload-server@1.3.1',
+    ], ['client', 'server']);
+
+
+    api.addFiles([
+        'lib/config.js',
+        'lib/router.js',
     ], ['client', 'server']);
 
     api.addFiles([
-        'helpers/role.js',
-        'lib/collections/RoleCollection.js',
-        'lib/collections/RoleGroup.js',
-        'lib/controllers/RoleController.js',
-        'lib/router.js',        
-    ], ['client', 'server']);
-
-    api.addFiles([
-        'server/RoleCollectionServer.js',
-        'server/RoleGroupServer.js',
+        'server/BackupRestoreServer.js',
     ], 'server');
 
     api.addFiles([
+        'client/assets/upload.js',
         'client/views/index.html',
         'client/views/index.js',
-        'client/views/_formCollection.html',
-        'client/views/_formCollection.js',
-        'client/views/_formGroup.html',
-        'client/views/_formGroup.js',
-        'client/views/assignUsers.html',
-        'client/views/assignUsers.js',
-        'helpers/role-ui.js'
-    ], 'client');
-
-    api.export([        
-        'RoleController',
     ], 'client');
 
     api.export([
-        'Role',
-        'RoleGroup',
-        'RoleCollection',
+        'Uploader',
+    ], 'client');
+
+    api.export([
+        'BackupRestoreConfig',
+        'UploadServer',
     ], ['client', 'server']);
 
 });
+

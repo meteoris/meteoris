@@ -1,0 +1,37 @@
+<template name="meteoris_backupRestoreIndex">
+
+    <section class="content-header">
+        <h1>Role</h1>
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/meteoris/backup-restore">Backup and Restore</a></li>
+            <li class="active">index</li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="pull-left">Backup Database</h3>
+            </div>
+            <div class="box-body">
+                <p>Lakukan backup database secara berkala. untuk membackup database, klik pada tombol Backup</p>
+                <button class="btn btn-success" id="btnBackup">Backup</button>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+        <div class="box">
+            <div class="box-header">
+                <h3 class="pull-left">Restore Database</h3>
+            </div>
+            <div class="box-body">
+                <p>Untuk Melakukan Restore, pilih file backup database dengan mengklik tombol Browse, kemudian klik tombol Restore</p>
+                <div class="form-group">
+                    {{> upload_bootstrap callbacks=myCallbacks}}
+                    <!--<p class="help-block">Example block-level help text here.</p>-->
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+    </section><!-- /.content -->  
+</template>
